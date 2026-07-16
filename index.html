@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Week 2.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="week-2">Week 2</h1>
+<h2 id="page-1">Page 1</h2>
+<ol>
+<li>Hello again. I am Paul Glassman, Professor and Associate Dean for Research and Community Engagement at the College of Dental Medicine at California Northstate University. Welcome to this next presentation in the series on “The U.S. Health Care Industry.”</li>
+</ol>
+<h2 id="page-2">Page 2</h2>
+<ol>
+<li>This second presentation will focus on the U.S. health care systems and include some comparisons about how we perform compared to other developed countries in the world.</li>
+</ol>
+<h2 id="page-3">Page 3</h2>
+<ol>
+<li>First, it’s important to understand that the United States spends a much higher percentage of its Gross Domestic Product (GDP) on health care compared to the other developed countries of the world. You can see in this chart that the gap has been widening since he 1980s with the United States spending almost twice as much now as a percent of our GDP compared to the other developed countries.</li>
+</ol>
+<h2 id="page-4">Page 4</h2>
+<ol>
+<li>This chart shows similar data, depicted in a slightly different way, but again you can see that the United States spends double the amount of the average spending on healthcare as a percentage of GDP compared to other developed countries in the world.</li>
+</ol>
+<h2 id="page-5">Page 5</h2>
+<ol>
+<li>The amount of money the United States spends might be acceptable if it produced better outcomes than are seen in other countries. However, as this chart from the Commonwealth Fund depicts, when looking at overall health system performance most of the other developed countries are clustered together.</li>
+</ol>
+<h2 id="page-6">Page 6</h2>
+<ol>
+<li>The United States is clearly an outlier spending far more money and producing significantly worse results.</li>
+</ol>
+<h2 id="page-7">Page 7</h2>
+<ol>
+<li>Another analysis of the same data shown on the slide is based on affordability of healthcare.</li>
+</ol>
+<h2 id="page-8">Page 8</h2>
+<ol>
+<li>Again, the United States is last with the least affordable healthcare system of any of the developed countries.</li>
+</ol>
+<h2 id="page-9">Page 9</h2>
+<ol>
+<li>Another of the measures tracked and analyzed by the Commonwealth fund is a measure of equity.</li>
+</ol>
+<h2 id="page-10">Page 10</h2>
+<ol>
+<li>Once again, as you see in this chart, the United States spends more money and falls significantly behind the other countries in terms of equity and access to healthcare resources.</li>
+</ol>
+<h2 id="page-11">Page 11</h2>
+<ol>
+<li>There has been concern for a long time that the rate of increase in our healthcare spending, especially given our poor results, is not only not justifiable because of poor results, but also because it is a significant contributor to our national debt. This contribution is expected to continue to increase.</li>
+</ol>
+<h2 id="page-12">Page 12</h2>
+<ol>
+<li>Another measure is life expectancy and avoidable deaths.</li>
+</ol>
+<h2 id="page-13">Page 13</h2>
+<ol>
+<li>Americans also have the lowest life expectancy compared to other developed countries and the most avoidable deaths.</li>
+</ol>
+<h2 id="page-14">Page 14</h2>
+<ol>
+<li>As you see here, In 2017 Warren Buffett declared that “Medical costs are the tapeworm of American economic competitiveness.”</li>
+</ol>
+<h2 id="page-15">Page 15</h2>
+<ol>
+<li>One question that arises from this data is why the United States spends so much more than other nations on healthcare. The answer is certainly not that we need to spend that money in order to get the superior results because we don’t. There are many factors, but among the dominant ideas is that healthcare is simply more expensive in the United States for similar kinds of services than it is in other countries. This analysis takes into consideration the differences in cost of living.</li>
+</ol>
+<h2 id="page-16">Page 16</h2>
+<ol>
+<li>Another factor that contributes to the cost of healthcare, poor overall performance, and inequities in access and health, is the fact that in United States we use a lot more high-priced, sophisticated, technology driven systems, that produce benefits for only a small share of the population. We use less routine and prevention-oriented services than are used in other developed countries.</li>
+</ol>
+<h2 id="page-17">Page 17</h2>
+<ol>
+<li>One way to visualize this difference in the way we spend healthcare dollars, is on this chart. Although the data is a decade old, the same spending patterns still exist. You can see the United States expenditures as a percent of GDP for healthcare, depicted in the light blue bars, as being much higher than the other developed countries. You can also see that the United States spends much less on what is described here as social care. United States is the only country in single digits on this chart in this area.</li>
+</ol>
+<h2 id="page-18">Page 18</h2>
+<ol>
+<li>As we discussed previously, this notion of spending on social care is often described as addressing the “Social Determinants Of Health”. This chart, from the California Department of Public Health website, depicts the many factors that contribute to people being healthy or not. As you can see, they include social inequities, institutional inequities, living conditions, risk behaviors, exposure to disease and injuries, and contributors to mortality. There is strong evidence that these factors are strong contributors to both individual and population health.</li>
+</ol>
+<h2 id="page-19">Page 19</h2>
+<ol>
+<li>However, as you saw a few slides back, in the United States most of our money goes to this one circled area on the chart, health care. There is increasing understanding that if we are to improve the performance of our health systems to levels enjoyed by the other developed countries in the world, we must shift some of our spending to address the social determinants of health.</li>
+</ol>
+<h2 id="page-20">Page 20</h2>
+<ol>
+<li>In fact, in 2016 the Institute of Medicine published this “Framework for Educating Health Professionals to Address the Social Determinants of Health.” They made the point that, across all health professions, health professions students need to begin their professional careers with a better understanding of the social determinants of health. They also make the point that even in care systems that are focused on individual health, providers who understand the broader context of social determinants can do a better job delivering individual care. And in addition, providers who understand the concepts involved in the social determinants of health can influence healthcare systems to produce better results by addressing social determinants.</li>
+</ol>
+<h2 id="page-21">Page 21</h2>
+<ol>
+<li>Many other groups have documented similar findings. This 2000 report from the Institute of Medicine emphasizes the range of factors that influence health using the metaphor of “Neurons to Neighborhoods” to express this idea.</li>
+</ol>
+<h2 id="page-22">Page 22</h2>
+<ol>
+<li>This widely quoted paper and diagram, often referred to as the “Fisher-Owens Diagram” again emphasizes the factors that contribute to oral health that range from:</li>
+<li>• the mouth of children with its microflora to hard and soft tissues to the impact of substrate (diet),</li>
+<li>• Influences at the level of the child,</li>
+<li>• Influences at the level of the family, and</li>
+<li>• Influences at the level of the community</li>
+<li>The common message is that if we focus only on teeth or oral structures, we are unlikely to succeed in producing a population with good oral health. This idea raises awareness about the many other ways that those interested in oral health can intervene.</li>
+</ol>
+<h2 id="page-23">Page 23</h2>
+<ol>
+<li>Another important concept to help understand why the U.S. health care systems work the way they do is this idea of “Commercial Determinants of Heath.” This idea is now being expressed as a component of Social Determinants of Health by the World Health Organization (WHO) and others. The WHO describes this idea as “Commercial determinants of health are a key social determinant, and refer to the conditions, actions and omissions by commercial actors that affect health.”</li>
+</ol>
+<h2 id="page-24">Page 24</h2>
+<ol>
+<li>Some key points about commercial determinants of health are listed on this slide. They include examples of ways that private sector actions affect people’s health.</li>
+<li>The United States is impacted to a greater degree by commercial determinants of health than other developed countries because our health systems are based on an entrepreneurial model and managed by and influenced by business interests to a greater degree than the health systems in other developed countries.</li>
+</ol>
+<h2 id="page-25">Page 25</h2>
+<ol>
+<li>In this presentation I have summarized the performance of the US healthcare industry and compared it to performance in other developed countries in the world. It is clear that the way we spend our healthcare dollars contributes to the low overall performance of our healthcare systems compared to other countries. We have also considered the social determinants of health and introduced the idea that there are many opportunities for improving oral health in addition to performing procedures on oral tissues.</li>
+</ol>
+
+</body>
+</html>
